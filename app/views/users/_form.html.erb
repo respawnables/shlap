@@ -1,0 +1,31 @@
+<div class="container card shadow p-3 mb-5 bg-light rounded">
+  <%#= render 'shared/errors', obj: @user %>
+  <%= form_with(model: @user, local: true) do |f| %>
+
+    <div class="form-group row">
+      <%= f.label :username, class: "col-2 col-form-label" %>
+      <div class="col-10">
+        <%= f.text_field :username, class: "form-control", placeholder: "Enter a username" %>
+      </div>
+
+    </div>
+
+    <div class="form-group row mt-5">
+      <%= f.label :email, class: "col-2 col-form-label" %>
+      <div class="col-10">
+        <%= f.text_field :email, class: "form-control", placeholder: "Enter your email adress" %>
+      </div>
+    </div>
+
+    <div class="form-group row mt-5">
+      <%= f.label :password, class: "col-2 col-form-label" %>
+      <div class="col-10">
+        <%= f.password_field :password, class: "form-control", placeholder: "Choose a password" %>
+      </div>
+    </div>
+
+    <div class="form-group mt-3 mb-4">
+      <%= f.submit(@user.new_record? ? "Sign Up" : "Update Information", class: "btn btn-secondary") %>
+    </div>
+  <% end %>
+</div>
