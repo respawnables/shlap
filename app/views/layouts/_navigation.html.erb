@@ -12,6 +12,11 @@
         <li class="nav-item">
           <%= link_to 'Signup', signup_path, class: "nav-link" %>
         </li>
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to 'Logout', logout_path(@user), class: "nav-link", method: :delete %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
