@@ -6,10 +6,6 @@ class TitlesController < ApplicationController
     @titles = Title.all
   end
 
-  # GET /titles/1 or /titles/1.json
-  def show
-  end
-
   # GET /titles/new
   def new
     @title = Title.new
