@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :answers
   resources :titles
   root 'welcome#index'
   resources :users, except: %i[new index]

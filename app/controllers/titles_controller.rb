@@ -53,13 +53,14 @@ class TitlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_title
-      @title = Title.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def title_params
-      params.fetch(:title, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_title
+    @title = Title.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def title_params
+    params.fetch(:title, {})
+  end
 end
