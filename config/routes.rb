@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :titles
   root 'welcome#index'
-  resources :users, except: [:new]
+  resources :users, except: %i[new index]
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
