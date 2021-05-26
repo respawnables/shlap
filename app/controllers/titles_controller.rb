@@ -18,23 +18,21 @@ class TitlesController < ApplicationController
   # POST /titles or /titles.json
   def create
     @title = Title.new(title_params)
-
-    respond_to do |format|
-      if @title.save
-        format.html { redirect_to @title, notice: "Title was successfully created." }
-        format.json { render :show, status: :created, location: @title }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @title.errors, status: :unprocessable_entity }
-      end
+    @title.user = current_user
+    if @title.save
+      flash[:notice] = 'Title was successfully created.'
+      redirect_to titles_path
+    else
+      render 'new'
     end
+
   end
 
   # PATCH/PUT /titles/1 or /titles/1.json
   def update
     respond_to do |format|
       if @title.update(title_params)
-        format.html { redirect_to @title, notice: "Title was successfully updated." }
+        format.html { redirect_to @title, notice: 'Title was successfully updated.' }
         format.json { render :show, status: :ok, location: @title }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -47,7 +45,7 @@ class TitlesController < ApplicationController
   def destroy
     @title.destroy
     respond_to do |format|
-      format.html { redirect_to titles_url, notice: "Title was successfully destroyed." }
+      format.html { redirect_to titles_url, notice: 'Title was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -61,6 +59,6 @@ class TitlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def title_params
-    params.fetch(:title, {})
+    params.require(:title).permit(:text)
   end
 end

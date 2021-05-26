@@ -1,17 +1,19 @@
-<%= form_with(model: title) do |form| %>
-  <% if title.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(title.errors.count, "error") %> prohibited this title from being saved:</h2>
+<div class="text-center mt-5">
+  <h1>New Shlap</h1>
+  <div class="container card shadow p-3 mb-5 bg-light rounded">
+    <%= form_with(model: title) do |form| %>
 
-      <ul>
-        <% title.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+
+  <div class="form-group row mt-5">
+    <%= form.label :text, class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= form.text_area :text, class: "form-control", placeholder: "Enter text", rows: 5 %>
     </div>
-  <% end %>
+  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Create Shlap', class: "btn btn-secondary mt-3" %>
   </div>
 <% end %>
+  </div>
+</div>
